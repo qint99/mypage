@@ -1,24 +1,21 @@
-# Olivia Qin’s portfolio
+# Olivia Qin’s personal website
 
-A personal website built with HTML and CSS.
+A small, text-focused personal website, published at https://qint99.github.io/mypage/.
 
-## Files
+## Learn by editing
 
-- `index.html`: words, links, and sections.
-- `styles.css`: colours, fonts, spacing, and mobile layout.
-- `.nojekyll`: tells GitHub Pages to publish these files as they are.
+- `index.html`: your introduction, projects, personal interests, reading list, and contact links.
+- `styles.css`: colours, fonts, sidebar, spacing, and mobile layout.
+- `script.js`: changes which page is visible when you use the sidebar. The browser’s Back button works too.
+- `assets/favicon.svg`: the small OQ icon in the browser tab.
+- `.nojekyll`: publishes the files as a plain website on GitHub Pages.
 
-## Publish with GitHub Pages
+Start by changing a sentence between the HTML tags. To change the main colours, look for the variables at the top of styles.css.
 
-1. Use the repository `qint99/mypage`. GitHub Free requires a public repository for Pages.
-2. Put these files at the top level of the repository, with `index.html` directly in the root.
-3. In repository Settings → Pages, select Deploy from a branch, then select the branch containing these files and the / (root) folder.
-4. Save and wait for GitHub to finish publishing. The website address is https://qint99.github.io/mypage/.
+Each page has a `data-page` name. A link such as `href="#reading"` opens that page. Older links to #about and #photography still work.
 
-A custom domain can be connected later. No domain purchase is needed for the github.io address.
+Your photographs and book entries can be added when you choose what to share. No fictional photos, book titles, or projects have been added.
 
-## Edit and learn
+## Publishing
 
-Start by changing a sentence in index.html. Open the file in your browser to see it. Change the accent colour near the top of styles.css to try a different look.
-
-Local edits appear on GitHub Pages after you upload or push an update to the publishing branch.
+GitHub Pages publishes the `main` branch and `/ (root)` folder of `qint99/mypage`. Updates to those files are published automatically. Google Fonts provides EB Garamond and DM Sans; system serif and sans-serif fonts are used if those cannot load.
