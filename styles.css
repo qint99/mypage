@@ -10,3 +10,35 @@
 @media(max-width:800px){:root{--sidebar:200px}.sidebar{padding:30px 23px}.site-name{font-size:22px}nav{font-size:12px;margin-top:35px;gap:25px}.welcome-link>span{font-size:10px}.sidebar-note{font-size:10px}main{padding:43px 31px 40px}footer{padding-inline:31px}.home-links{grid-template-columns:1fr;gap:23px}body{font-size:20px}h1{font-size:43px}.site-note{font-size:10px}}
 @media(max-width:600px){html{scroll-padding-top:20px}.sidebar{position:static;width:auto;padding:25px 23px 22px;border-right:0;border-bottom:1px solid var(--line);gap:0}.site-name{font-size:25px}nav{margin-top:22px;gap:14px;flex-direction:row;flex-wrap:wrap;align-items:center;column-gap:22px;font-size:12px}.nav-group{display:contents}.welcome-link>span,.nav-label,.sidebar-note{display:none}nav a[aria-current="page"]::before{display:none}nav a[aria-current="page"]{text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:6px}.main-column{margin:0;min-height:calc(100svh - 143px)}.site-note{font-size:10px;padding:9px 23px;line-height:1.6}main{padding:35px 23px 40px;max-width:650px}h1{font-size:43px;margin-bottom:22px}body{font-size:20px;line-height:1.55}.intro-notes{margin-top:32px}.intro-notes h2{font-size:23px}.intro-notes li{margin-bottom:14px}.home-links{margin-top:33px;padding-top:22px;gap:20px;grid-template-columns:1fr}.home-links a{font-size:20px}.page .footnote{font-size:17px;margin-top:30px}.entry-top h2{font-size:25px}.entry-top{align-items:flex-start}.entry-status{padding-top:8px;font-size:9px}.project-entry{margin-top:30px}.project-entry .project-note{font-size:19px}.entry-bottom{font-size:10px}.reading-empty h2{font-size:25px}.life-list>section{padding-block:20px}.life-list p,.reading-empty>p{font-size:20px}.contact-link{font-size:23px}footer{padding:18px 23px 23px;max-width:650px;font-size:10px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* Small finishing details: olive ink, quiet dividers, and a notebook-like feel. */
+:root{--accent:#52654e;--ink:#344034;--line:#dcdfd3}
+.sidebar{background:#f1f2eb}
+.site-name::after{content:'';display:block;width:34px;height:2px;background:#b08b73;margin-top:17px}
+nav a{transition:color .2s,translate .2s}
+nav a:hover{color:var(--accent);translate:3px 0}
+nav a[aria-current="page"]{color:var(--accent)}
+.site-note{background:#e9ede1;letter-spacing:.15px}
+.page{position:relative}
+.page::before{content:attr(data-label);display:block;font:9px/1.6 var(--sans);letter-spacing:1.8px;color:var(--accent);margin-bottom:20px}
+.page h1{color:var(--accent)}
+.page-sprig{position:absolute;width:65px;height:84px;right:8px;top:4px;color:#88967a;pointer-events:none}
+#home h1{padding-right:85px}
+.intro-notes{border-left:1px solid #bac5aa;padding-left:24px}
+.intro-notes li::marker{color:#7b8d6d;font-size:.75em}
+.home-links{border-top:0;gap:20px;padding-top:0}
+.home-links>div{border-top:1px solid #aab89b;background:#eef0e7;padding:20px 20px 23px;transition:background .2s}
+.home-links>div:hover{background:#e7ebdd}
+.home-links .small-label{font-size:9px;color:var(--accent)}
+.home-links a>span{display:inline-block;transition:translate .2s}
+.home-links a:hover>span{translate:2px -2px}
+.project-entry,.reading-empty{border-top:1px solid #aab89b}
+.entry-status{padding:5px 9px;background:#edf0e6}
+.life-list h2{color:var(--accent)}
+.contact-link:hover{background:#eef0e7}
+footer{position:relative}
+footer::before{content:'';position:absolute;top:0;left:76px;right:76px;border-top:1px solid var(--line)}
+@media(max-width:1100px){footer::before{left:45px;right:45px}}
+@media(max-width:800px){footer::before{left:31px;right:31px}.page-sprig{width:49px;height:66px;right:0}#home h1{padding-right:65px}.intro-notes{padding-left:18px}}
+@media(max-width:600px){.site-name::after{margin-top:12px;width:26px}.page::before{font-size:8px;letter-spacing:1.4px;margin-bottom:17px}.page-sprig{top:3px;width:46px;height:61px}#home h1{padding-right:58px}.intro-notes{padding-left:17px}.home-links>div{padding:17px 18px 20px}footer::before{left:23px;right:23px}}
+@media(prefers-reduced-motion:reduce){nav a,.home-links>div,.home-links a>span{transition:none}nav a:hover,.home-links a:hover>span{translate:none}}
