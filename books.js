@@ -74,5 +74,29 @@ window.readingBooks = [
     height: 210,
     notes: '',
     source: 'https://www.simonandschuster.com/books/Protocols/Andrew-D-Huberman/9781668032145'
+  },
+  {
+    id: 'eleanor-oliphant',
+    title: 'Eleanor Oliphant Is Completely Fine',
+    author: 'Gail Honeyman',
+    cover: 'assets/covers/eleanor-oliphant.jpg',
+    coverSource: 'https://images1.penguinrandomhouse.com/cover/9780735220706',
+    color: '#e6dac3',
+    ink: '#303b32',
+    height: 202,
+    notes: '',
+    source: 'https://www.penguinrandomhouse.com/books/540586/eleanor-oliphant-is-completely-fine-reeses-book-club-by-gail-honeyman/9780735220706/'
+  },
+  {
+    id: 'on-earth-were-briefly-gorgeous',
+    title: 'On Earth We’re Briefly Gorgeous',
+    author: 'Ocean Vuong',
+    cover: 'assets/covers/on-earth-were-briefly-gorgeous.jpg',
+    coverSource: 'https://images1.penguinrandomhouse.com/cover/9780525562047',
+    color: '#6f747b',
+    ink: '#fff8e8',
+    height: 195,
+    notes: '',
+    source: 'https://www.penguinrandomhouse.com/books/600633/on-earth-were-briefly-gorgeous-by-ocean-vuong/'
   }
 ];
