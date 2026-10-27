@@ -23,6 +23,6 @@ GitHub Pages publishes the `main` branch and `/ (root)` folder of `qint99/mypage
 
 ## Your bookshelf
 
-The reading page shows your books as clickable covers. Search by title or author, open a book for its details, and use Previous/Next to browse. Escape or the close button returns to the shelf.
+The reading page shows your books as clickable covers. Search by title or author, open a book with a cover-turning effect, and use Previous/Next to browse with directional page turns. The animation is skipped when reduced motion is enabled. Escape or the close button returns to the shelf.
 
 To add a book, copy an entry in books.js and change its id, title, author, source link, and colours. Add your own thoughts inside its notes field. Empty notes show “Personal notes coming soon.” The shelf and details view display real publisher cover images stored in assets/covers/. Each entry’s coverSource records where the image came from. Text-only covers are retained as a fallback if an image cannot load.

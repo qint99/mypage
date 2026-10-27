@@ -65,3 +65,28 @@ footer::before{content:'';position:absolute;top:0;left:76px;right:76px;border-to
 .detail-cover,.detail-cover.has-cover{height:280px;min-height:0}
 .detail-cover.has-cover>.detail-cover-image{height:100%;object-fit:contain;object-position:center top}
 @media(max-width:600px){.book-detail-layout{min-height:350px}.detail-cover,.detail-cover.has-cover{height:170px}}
+
+/* Opening a book: an inside spread, a paper fold, and a hinged front cover. */
+.book-dialog{width:min(780px,calc(100% - 32px));padding:44px 24px 0;background:#f1eee5}
+.book-detail-layout{position:relative;isolation:isolate;perspective:1600px;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;min-height:390px;padding-bottom:0;background:linear-gradient(90deg,#f8f5eb 0%,#f8f5eb 46%,#e6e0d2 50%,#faf8f0 54%,#faf8f0 100%);border:1px solid #ded8ca;border-radius:3px 9px 9px 3px;box-shadow:0 3px 0 #d8d2c4,0 6px 0 #e4ded0,0 11px 16px #514c3a13}
+.book-detail-layout::after{content:'';position:absolute;left:50%;top:0;bottom:0;width:1px;background:#c2b9a6;box-shadow:1px 0 8px 2px #7e725323;pointer-events:none}
+.book-detail-layout>.detail-cover{margin:28px auto 26px;width:175px;height:280px;min-height:0}
+.book-detail-copy{padding:28px 25px 30px;min-width:0}
+.book-detail-copy h2{font-size:31px}
+.book-dialog-nav{margin-top:15px}
+.book-close{z-index:6}
+.book-opening-leaf{position:absolute;top:0;bottom:0;left:50%;width:50%;transform-origin:left center;transform-style:preserve-3d;z-index:4;pointer-events:none}
+.book-opening-leaf[hidden]{display:none}
+.book-opening-leaf[data-direction="backward"]{left:0;transform-origin:right center}
+.leaf-front,.leaf-back{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border:1px solid #d7ceba;border-radius:2px 7px 7px 2px;overflow:hidden;box-shadow:5px 4px 13px #4c443326}
+.leaf-front{display:grid;place-items:center;background:#ece8db;padding:18px}
+.leaf-front img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(2px 3px 2px #303b2d26)}
+.leaf-back{transform:rotateY(180deg);background:linear-gradient(90deg,#dfd7c6,#f8f5e9 14%,#faf7ed 90%,#eee6d5)}
+.leaf-back::before{content:'';position:absolute;inset:42px 30px;background:repeating-linear-gradient(transparent 0 23px,#c5bda847 23px 24px)}
+@media(max-width:600px){.book-dialog{padding:43px 15px 0}.book-detail-layout{min-height:410px}.book-detail-layout>.detail-cover{width:100px;height:170px;margin:24px auto}.book-detail-copy{padding:23px 15px 25px}.book-detail-copy h2{font-size:25px}.book-detail-copy>p{font-size:16px}.book-notes p{font-size:17px}.book-detail-copy .small-label{font-size:6px;letter-spacing:.5px}.book-notes{margin-top:18px}.book-dialog-nav{font-size:9px}.leaf-front{padding:10px}.leaf-back::before{inset:30px 17px}}
+@media(max-width:360px){.book-detail-layout{grid-template-columns:1fr;background:#faf8f0}.book-detail-layout::after{display:none}.book-detail-layout>.detail-cover{margin-bottom:0}.book-detail-copy{padding:22px}.book-opening-leaf{left:0;width:100%}.book-detail-copy h2{font-size:26px}}
+@media(prefers-reduced-motion:reduce){.book-opening-leaf{display:none}}
+/* Keep the animated cover completely inside its page, including on phones. */
+.leaf-front{display:block}
+.leaf-front img{position:absolute;inset:18px;width:calc(100% - 36px);height:calc(100% - 36px);object-fit:contain}
+@media(max-width:600px){.leaf-front img{inset:10px;width:calc(100% - 20px);height:calc(100% - 20px)}}

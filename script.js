@@ -35,6 +35,46 @@ if (bookcase && bookSearch && bookDialog) {
   let shelfColumns = 0;
   let currentBook = 0;
   let lastBookId = null;
+  const openingLeaf = bookDialog.querySelector('.book-opening-leaf');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let openingAnimations = [];
+  let openingSequence = 0;
+  function stopBookOpening() {
+    openingSequence += 1;
+    for (const animation of openingAnimations) animation.cancel();
+    openingAnimations = [];
+    openingLeaf.hidden = true;
+  }
+  // A real cover turns on its hinge, revealing the inside page.
+  function animateBookOpening(backward = false) {
+    stopBookOpening();
+    if (reducedMotion.matches || !bookDialog.open) return;
+    const sequence = openingSequence;
+    const book = readingBooks[currentBook];
+    const image = document.getElementById('opening-cover-image');
+    image.src = book.cover || '';
+    image.hidden = !book.cover;
+    openingLeaf.dataset.direction = backward ? 'backward' : 'forward';
+    openingLeaf.hidden = false;
+    const angle = backward ? 178 : -178;
+    const turn = openingLeaf.animate([
+      { transform: 'rotateY(0deg)', opacity: 1, offset: 0 },
+      { transform: `rotateY(${angle * 0.7}deg)`, opacity: 1, offset: 0.72 },
+      { transform: `rotateY(${angle}deg)`, opacity: 0, offset: 1 }
+    ], { duration: 900, easing: 'cubic-bezier(.25,.65,.2,1)', fill: 'forwards' });
+    const cover = bookDialog.querySelector('.detail-cover').animate([
+      { opacity: 0 }, { opacity: 1 }
+    ], { duration: 450, delay: 300, fill: 'backwards' });
+    const notes = bookDialog.querySelector('.book-detail-copy').animate([
+      { opacity: 0, transform: 'translateX(8px)' },
+      { opacity: 1, transform: 'translateX(0)' }
+    ], { duration: 450, delay: 220, fill: 'backwards' });
+    openingAnimations = [turn, cover, notes];
+    turn.finished.then(() => {
+      if (sequence === openingSequence) stopBookOpening();
+    }).catch(() => {});
+  }
+  reducedMotion.addEventListener('change', stopBookOpening);
   const normalize = value => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
   const fullTitle = book => book.subtitle ? `${book.title}: ${book.subtitle}` : book.title;
   const addText = (parent, tag, className, text) => {
@@ -74,6 +114,7 @@ if (bookcase && bookSearch && bookDialog) {
     displayBook(index);
     document.body.classList.add('book-is-open');
     bookDialog.showModal();
+    animateBookOpening();
   }
   function renderShelf(force = false) {
     const query = normalize(bookSearch.value.trim());
@@ -137,13 +178,20 @@ if (bookcase && bookSearch && bookDialog) {
     if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) bookDialog.close();
   });
   bookDialog.addEventListener('close', () => {
+    stopBookOpening();
     document.body.classList.remove('book-is-open');
     if (!document.getElementById('reading').hidden) {
       [...bookcase.querySelectorAll('button')].find(button => button.dataset.bookId === lastBookId)?.focus({ preventScroll: true });
     }
   });
-  document.getElementById('previous-book').addEventListener('click', () => displayBook(currentBook - 1));
-  document.getElementById('next-book').addEventListener('click', () => displayBook(currentBook + 1));
+  document.getElementById('previous-book').addEventListener('click', () => {
+    displayBook(currentBook - 1);
+    animateBookOpening(true);
+  });
+  document.getElementById('next-book').addEventListener('click', () => {
+    displayBook(currentBook + 1);
+    animateBookOpening();
+  });
   window.addEventListener('hashchange', () => { if (bookDialog.open) bookDialog.close(); });
   renderShelf(true);
   new ResizeObserver(() => renderShelf()).observe(bookcase);

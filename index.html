@@ -10,9 +10,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <script src="books.js" defer></script>
-  <script src="script.js" defer></script>
+  <link rel="stylesheet" href="styles.css?v=0e3ffd1976">
+  <script src="books.js?v=05769ca883" defer></script>
+  <script src="script.js?v=09e8900488" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -82,7 +82,7 @@
   </div>
   <dialog id="book-dialog" class="book-dialog" aria-labelledby="book-dialog-title" aria-describedby="book-dialog-author">
     <button class="book-close" type="button" aria-label="Close book details" autofocus>×</button>
-    <div class="book-detail-layout"><div class="detail-cover" aria-hidden="true"><img id="detail-cover-image" class="detail-cover-image" alt=""><span class="detail-cover-label">FROM OLIVIA’S SHELF</span><span id="detail-cover-title"></span><span id="detail-cover-author"></span></div><div class="book-detail-copy"><span class="small-label">A BOOK I’VE READ</span><h2 id="book-dialog-title"></h2><p id="book-dialog-author"></p><div class="book-notes"><h3>My notes</h3><p id="book-dialog-notes"></p></div><a id="book-publisher-link" target="_blank" rel="noopener noreferrer">About this book ↗<span class="sr-only"> (publisher’s website, opens in a new tab)</span></a></div></div>
+    <div class="book-detail-layout"><div class="book-opening-leaf" aria-hidden="true" hidden><div class="leaf-front"><img id="opening-cover-image" alt=""></div><div class="leaf-back"></div></div><div class="detail-cover" aria-hidden="true"><img id="detail-cover-image" class="detail-cover-image" alt=""><span class="detail-cover-label">FROM OLIVIA’S SHELF</span><span id="detail-cover-title"></span><span id="detail-cover-author"></span></div><div class="book-detail-copy"><span class="small-label">A BOOK I’VE READ</span><h2 id="book-dialog-title"></h2><p id="book-dialog-author"></p><div class="book-notes"><h3>My notes</h3><p id="book-dialog-notes"></p></div><a id="book-publisher-link" target="_blank" rel="noopener noreferrer">About this book ↗<span class="sr-only"> (publisher’s website, opens in a new tab)</span></a></div></div>
     <div class="book-dialog-nav"><button id="previous-book" type="button">← Previous book</button><span id="book-position" aria-live="polite"></span><button id="next-book" type="button">Next book →</button></div>
   </dialog>
 </body>
