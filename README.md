@@ -6,6 +6,7 @@ A small, text-focused personal website, published at https://qint99.github.io/my
 
 - `index.html`: your introduction, projects, personal interests, reading list, and contact links.
 - `styles.css`: colours, fonts, sidebar, spacing, and mobile layout.
+- `books.js`: the books you’ve read. Each entry contains its title, author, colours, publisher link, and your optional notes.
 - `script.js`: changes which page is visible when you use the sidebar. The browser’s Back button works too.
 - `assets/favicon.svg`: the small OQ icon in the browser tab.
 - `.nojekyll`: publishes the files as a plain website on GitHub Pages.
@@ -14,8 +15,14 @@ Start by changing a sentence between the HTML tags. To change the main colours, 
 
 Each page has a `data-page` name. A link such as `href="#reading"` opens that page. Older links to #about and #photography still work.
 
-Your photographs and book entries can be added when you choose what to share. No fictional photos, book titles, or projects have been added.
+Your photographs and personal reading notes can be added when you choose what to share. No fictional photos, book titles, or projects have been added.
 
 ## Publishing
 
 GitHub Pages publishes the `main` branch and `/ (root)` folder of `qint99/mypage`. Updates to those files are published automatically. Google Fonts provides EB Garamond and DM Sans; system serif and sans-serif fonts are used if those cannot load.
+
+## Your bookshelf
+
+The reading page shows your five books as clickable covers. Search by title or author, open a book for its details, and use Previous/Next to browse. Escape or the close button returns to the shelf.
+
+To add a book, copy an entry in books.js and change its id, title, author, source link, and colours. Add your own thoughts inside its notes field. Empty notes show “Personal notes coming soon.” The covers are original typographic designs rather than images of a particular edition.

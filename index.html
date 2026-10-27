@@ -11,6 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script src="books.js" defer></script>
   <script src="script.js" defer></script>
 </head>
 <body>
@@ -62,9 +63,12 @@
 
       <section class="page" data-page="reading" data-label="04 / BETWEEN THE PAGES" id="reading" aria-labelledby="reading-title">
         <h1 id="reading-title">My reading list</h1>
-        <p>A growing collection of the books I read, a few notes, and the ideas that stay with me.</p>
-        <div class="reading-empty"><span class="small-label">A shelf in the making</span><h2>Leaving room for the next chapter.</h2><p>I’m putting together my first book entries. Reading notes will appear here soon.</p></div>
-        <p class="footnote">A personal reading journal, one book at a time.</p>
+        <p>A little shelf of books I’ve read. Pick one up to take a closer look.</p>
+        <div class="shelf-tools"><span id="book-count" class="small-label" role="status" aria-live="polite">5 books on my shelf</span><label class="book-search"><span class="sr-only">Find a book by title or author</span><input id="book-search" type="search" placeholder="Find a book…" autocomplete="off"></label></div>
+        <div class="bookcase" id="bookcase" aria-label="Books I have read"></div>
+        <p id="shelf-no-results" class="shelf-no-results" hidden>No books match your search. <button id="clear-book-search" type="button">Show all books</button></p>
+        <p class="shelf-instruction">Click or tap a cover to open it. A growing collection, with room for more.</p>
+        <noscript><p>My read shelf:</p><ul><li>A Room of One’s Own — Virginia Woolf</li><li>The Count of Monte Cristo — Alexandre Dumas</li><li>The Things We Never Say — Elizabeth Strout</li><li>Strangers: A Memoir of Marriage — Belle Burden</li><li>Careless People — Sarah Wynn-Williams</li></ul><p>Enable JavaScript to explore the interactive shelf.</p></noscript>
       </section>
 
       <section class="page" data-page="contact" data-label="05 / A LITTLE HELLO" id="contact" aria-labelledby="contact-title">
@@ -76,5 +80,10 @@
     </main>
     <footer><span>Olivia Qin</span><a href="https://github.com/qint99/mypage" target="_blank" rel="noopener noreferrer">Made as I learn ↗<span class="sr-only"> (source on GitHub, opens in a new tab)</span></a></footer>
   </div>
+  <dialog id="book-dialog" class="book-dialog" aria-labelledby="book-dialog-title" aria-describedby="book-dialog-author">
+    <button class="book-close" type="button" aria-label="Close book details" autofocus>×</button>
+    <div class="book-detail-layout"><div class="detail-cover" aria-hidden="true"><span class="detail-cover-label">FROM OLIVIA’S SHELF</span><span id="detail-cover-title"></span><span id="detail-cover-author"></span></div><div class="book-detail-copy"><span class="small-label">A BOOK I’VE READ</span><h2 id="book-dialog-title"></h2><p id="book-dialog-author"></p><div class="book-notes"><h3>My notes</h3><p id="book-dialog-notes"></p></div><a id="book-publisher-link" target="_blank" rel="noopener noreferrer">About this book ↗<span class="sr-only"> (publisher’s website, opens in a new tab)</span></a></div></div>
+    <div class="book-dialog-nav"><button id="previous-book" type="button">← Previous book</button><span id="book-position" aria-live="polite"></span><button id="next-book" type="button">Next book →</button></div>
+  </dialog>
 </body>
 </html>
