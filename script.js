@@ -58,7 +58,14 @@ if (bookcase && bookSearch && bookDialog) {
     document.getElementById('book-dialog-notes').textContent = book.notes.trim() || 'Personal notes coming soon.';
     document.getElementById('book-publisher-link').href = book.source;
     document.getElementById('book-position').textContent = `${currentBook + 1} of ${readingBooks.length}`;
-    colorBook(bookDialog.querySelector('.detail-cover'), book);
+    const cover = bookDialog.querySelector('.detail-cover');
+    const image = document.getElementById('detail-cover-image');
+    colorBook(cover, book);
+    cover.classList.remove('has-cover');
+    image.onload = () => cover.classList.add('has-cover');
+    image.onerror = () => cover.classList.remove('has-cover');
+    if (book.cover) image.src = book.cover;
+    else image.removeAttribute('src');
   }
   function openBook(id) {
     const index = readingBooks.findIndex(book => book.id === id);
@@ -100,6 +107,16 @@ if (bookcase && bookSearch && bookDialog) {
         addText(button, 'span', 'shelf-book-title', book.title);
         if (book.subtitle) addText(button, 'span', 'shelf-book-subtitle', book.subtitle);
         addText(button, 'span', 'shelf-book-author', book.author);
+        if (book.cover) {
+          const image = document.createElement('img');
+          image.className = 'shelf-book-cover';
+          image.alt = '';
+          image.decoding = 'async';
+          image.addEventListener('load', () => button.classList.add('has-cover'));
+          image.addEventListener('error', () => button.classList.remove('has-cover'));
+          image.src = book.cover;
+          button.append(image);
+        }
         button.addEventListener('click', () => openBook(book.id));
         row.append(button);
       }
